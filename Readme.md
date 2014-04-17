@@ -1,9 +1,10 @@
 Nekland Youtube Api
 ===================
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Nekland/YoutubeApi/badges/quality-score.png?s=eaea1fb6e36355023b61e50da0143f144e2e9e57)](https://scrutinizer-ci.com/g/Nekland/YoutubeApi/) [![Build Status](https://travis-ci.org/Nekland/YoutubeApi.svg?branch=master)](https://travis-ci.org/Nekland/YoutubeApi)
+
 Let's make usage of youtube easy, cool, and maintainable !
 
-***This library is inspired by [php-github-api](https://github.com/KnpLabs/php-github-api) from KnpLabs.***
 
 
 Getting Started
@@ -33,3 +34,10 @@ $youtube->authenticate(
 // The info variable will contains an array of data returned by google
 $info = $youtube->api('video')->findVideoById('RnpyRe_7jZA');
 ```
+
+Thanks
+------
+
+This library is inspired by [php-github-api](https://github.com/KnpLabs/php-github-api) from KnpLabs.
+
+Any contribution is lovely accepted. And contributors, we love you.
