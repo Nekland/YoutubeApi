@@ -1,0 +1,29 @@
+{
+    "name":        "nekland/youtube-api",
+    "type":        "library",
+    "description": "Simple library you can build you're api upon.",
+    "keywords":    ["nekland", "api", "base"],
+    "license":     "MIT",
+    "authors": [
+        {
+            "name":     "Maxime Veber",
+            "email":    "nekland@gmail.com",
+            "homepage": "http://nekland.fr"
+        }
+    ],
+    "require": {
+        "php":              ">=5.4",
+        "guzzle/guzzle":    ">=3.7",
+        "nekland/base-api": "~0.0.1",
+        "namshi/jose":      "dev-master"
+    },
+    "suggest": {
+        "nekland/soundcloud-api":    "Soundcloud API made easy !"
+    },
+    "autoload": {
+        "psr-0": { "Nekland\\": "lib/" }
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=3.7"
+    }
+}
