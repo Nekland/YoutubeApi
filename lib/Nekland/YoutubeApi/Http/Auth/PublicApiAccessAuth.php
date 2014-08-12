@@ -46,7 +46,7 @@ class PublicApiAccessAuth implements AuthInterface
         $url = $request->getUrl();
 
         $url .= (false === strpos($url, '?') ? '?' : '&');
-        $url .= utf8_encode('key='.$this->options['key']);
+        $url .= 'key=' . $this->options['key'];
 
         $request->setUrl($url);
     }
