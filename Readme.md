@@ -35,6 +35,10 @@ $youtube->authenticate(
 $info = $youtube->api('video')->findVideoById('RnpyRe_7jZA');
 ```
 
+### More
+
+We have a more complete documentation in the [docs](docs/1.index.md) folder.
+
 Thanks
 ------
 
