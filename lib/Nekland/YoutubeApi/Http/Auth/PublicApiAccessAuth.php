@@ -43,7 +43,7 @@ class PublicApiAccessAuth implements AuthInterface
      */
     public function auth(\Guzzle\Http\Message\Request $request)
     {
-        $url = $request->getUrl();
+        $url = (string) $request->getUrl();
 
         $url .= (false === strpos($url, '?') ? '?' : '&');
         $url .= 'key=' . $this->options['key'];
