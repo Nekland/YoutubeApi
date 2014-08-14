@@ -1,7 +1,7 @@
 Nekland Youtube Api
 ===================
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Nekland/YoutubeApi/badges/quality-score.png?s=eaea1fb6e36355023b61e50da0143f144e2e9e57)](https://scrutinizer-ci.com/g/Nekland/YoutubeApi/) [![Build Status](https://travis-ci.org/Nekland/YoutubeApi.svg?branch=master)](https://travis-ci.org/Nekland/YoutubeApi)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Nekland/YoutubeApi/badges/quality-score.png?s=eaea1fb6e36355023b61e50da0143f144e2e9e57)](https://scrutinizer-ci.com/g/Nekland/YoutubeApi/) [![Build Status](https://travis-ci.org/Nekland/YoutubeApi.svg?branch=master)](https://travis-ci.org/Nekland/YoutubeApi) [![Gitter chat](https://badges.gitter.im/Nekland/YoutubeApi.png)](https://gitter.im/Nekland/YoutubeApi)
 
 Let's make usage of youtube easy, cool, and maintainable !
 
