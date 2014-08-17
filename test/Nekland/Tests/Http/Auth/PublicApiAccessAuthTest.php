@@ -22,9 +22,6 @@ class PublicApiAccessAuthTest extends \PHPUnit_Framework_TestCase
     {
         $auth = new PublicApiAccessAuth();
         $this->assertInstanceOf('Nekland\\YoutubeApi\\Http\\Auth\\PublicApiAccessAuth', $auth);
-
-        $auth = new PublicApiAccessAuth($this->getMock('Guzzle\\Http\\ClientInterface'));
-        $this->assertInstanceOf('Nekland\\YoutubeApi\\Http\\Auth\\PublicApiAccessAuth', $auth);
     }
 
     /**
