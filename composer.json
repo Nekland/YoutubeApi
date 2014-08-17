@@ -15,7 +15,7 @@
         "php":              ">=5.4",
         "guzzle/guzzle":    ">=3.7",
         "nekland/base-api": "~0.0.1",
-        "namshi/jose":      "dev-master"
+        "namshi/jose":      "~1.2"
     },
     "suggest": {
         "nekland/soundcloud-api":    "Soundcloud API made easy !"
