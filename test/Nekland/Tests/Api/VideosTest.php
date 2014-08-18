@@ -12,9 +12,8 @@
 namespace Nekland\Tests\Api;
 
 
-use Nekland\YoutubeApi\Youtube;
 
-class VideosTest extends \PHPUnit_Framework_TestCase
+class VideosTest extends TestCase
 {
     /**
      * @test
@@ -22,12 +21,12 @@ class VideosTest extends \PHPUnit_Framework_TestCase
     public function shouldReturnYoutubeArrayAsJson()
     {
         $youtube = $this->getYoutubeMock(['get' => $this->getYoutubeList()]);
-        /** @var \Nekland\YoutubeApi\Api\Videos $videos */
-        $videos  = $youtube->api('videos');
+        /** @var \Nekland\YoutubeApi\Api\Playlists $playlists */
+        $playlists  = $youtube->api('playlists');
 
-        $this->assertEquals($videos->listById('DR7e0DoHZ2Y')['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
-        $this->assertEquals($videos->getById('DR7e0DoHZ2Y')['id'], 'DR7e0DoHZ2Y');
-        $this->assertEquals($videos->listBy(['id' => 'DR7e0DoHZ2Y'])['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
+        $this->assertEquals($playlists->listById('DR7e0DoHZ2Y')['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
+        $this->assertEquals($playlists->getById('DR7e0DoHZ2Y')['id'], 'DR7e0DoHZ2Y');
+        $this->assertEquals($playlists->listBy(['id' => 'DR7e0DoHZ2Y'])['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
     }
 
     private function getYoutubeList()
@@ -71,23 +70,5 @@ class VideosTest extends \PHPUnit_Framework_TestCase
   }
  ]
 }';
-    }
-
-    /**
-     * @param array $data an array of method => return for the httpclient mocked
-     * @return Youtube
-     */
-    private function getYoutubeMock(array $data)
-    {
-        $httpClient = $this->getMock('Nekland\\BaseApi\\Http\\ClientInterface');
-
-        foreach($data as $method => $return) {
-            $httpClient->expects($this->any())
-                ->method($method)
-                ->willReturn($return)
-            ;
-        }
-
-        return new Youtube($httpClient);
     }
 }
