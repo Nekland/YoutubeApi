@@ -32,7 +32,7 @@ $youtube->authenticate(
 );
 
 // The info variable will contains an array of data returned by google
-$info = $youtube->api('video')->findVideoById('RnpyRe_7jZA');
+$info = $youtube->api('videos')->getById('RnpyRe_7jZA');
 ```
 
 ### More
