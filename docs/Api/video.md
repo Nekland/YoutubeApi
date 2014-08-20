@@ -7,7 +7,7 @@ First retrieve the video api object (`Nekland\YoutubeApi\Api\Videos`).
 <?php
 
 $youtube = new Youtube();
-$videoApi = $youtube->api('video');
+$videoApi = $youtube->api('videos');
 ```
 
 List videos

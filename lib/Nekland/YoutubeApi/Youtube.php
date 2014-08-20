@@ -39,6 +39,8 @@ class Youtube extends Api
         switch($name) {
             case 'videos':
                 return new \Nekland\YoutubeApi\Api\Videos($this);
+            case 'playlists':
+                return new \Nekland\YoutubeApi\Api\Playlists($this);
             default:
                 throw new \InvalidArgumentException(sprintf('Undefined api instance called: "%s"', $name));
         }
