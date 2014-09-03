@@ -12,37 +12,24 @@
 namespace Nekland\YoutubeApi;
 
 use Nekland\BaseApi\Api;
+use Nekland\BaseApi\ApiFactory;
 use Nekland\BaseApi\Http\ClientInterface;
 use Nekland\YoutubeApi\Http\HttpClient;
 
-class Youtube extends Api
+/**
+ * Class Youtube
+ * @method \Nekland\YoutubeApi\Api\Videos getVideosApi
+ */
+class Youtube extends ApiFactory
 {
     /**
-     * @param ClientInterface $httpClient
+     * Return array of namespaces where AbstractApi instance are localized
+     *
+     *
+     * @return string[] Example: ['Nekland\BaseApi\Api']
      */
-    public function __construct(ClientInterface $httpClient=null)
+    protected function getApiNamespaces()
     {
-        if (null === $httpClient) {
-            parent::__construct(new HttpClient());
-        } else {
-            parent::__construct($httpClient);
-        }
-    }
-
-    /**
-     * @param string $name
-     * @return Api\AbstractApi
-     * @throws \InvalidArgumentException
-     */
-    public function api($name)
-    {
-        switch($name) {
-            case 'videos':
-                return new \Nekland\YoutubeApi\Api\Videos($this);
-            case 'playlists':
-                return new \Nekland\YoutubeApi\Api\Playlists($this);
-            default:
-                throw new \InvalidArgumentException(sprintf('Undefined api instance called: "%s"', $name));
-        }
+        return ['Nekland\YoutubeApi\Api'];
     }
 }
