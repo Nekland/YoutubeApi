@@ -17,14 +17,13 @@ use Nekland\BaseApi\Http\ClientInterface;
 use Nekland\YoutubeApi\Http\HttpClient;
 
 /**
- * Class Youtube
  * @method \Nekland\YoutubeApi\Api\Videos getVideosApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getPlaylistsApi
  */
 class Youtube extends ApiFactory
 {
     /**
      * Return array of namespaces where AbstractApi instance are localized
-     *
      *
      * @return string[] Example: ['Nekland\BaseApi\Api']
      */

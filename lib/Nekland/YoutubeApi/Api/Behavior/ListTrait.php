@@ -21,12 +21,12 @@ trait ListTrait
      */
     public function listById($id, array $parts = ['snippet'], array $otherParameters = [])
     {
-        $parameters = array_merge(
+        $body = array_merge(
             ['part' => implode(',', $parts), 'id' => $id],
             $otherParameters
         );
 
-        return $this->get(static::URL, $parameters);
+        return $this->get(static::URL, $body);
     }
 
     /**
@@ -50,12 +50,12 @@ trait ListTrait
      */
     public function listBy(array $filters, array $parts = ['snippet'], array $otherParameters = [])
     {
-        $parameters = array_merge(
+        $body = array_merge(
             ['part' => $parts],
             $filters,
             $otherParameters
         );
 
-        return $this->get(static::URL, $parameters);
+        return $this->get(static::URL, $body);
     }
 }

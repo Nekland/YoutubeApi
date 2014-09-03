@@ -10,9 +10,9 @@
  */
 
 namespace Nekland\YoutubeApi\Api;
+
 use Nekland\BaseApi\Api\AbstractApi;
 use Nekland\YoutubeApi\Api\Behavior\ListTrait;
-
 
 /**
  * Class Videos

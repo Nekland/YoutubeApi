@@ -12,21 +12,17 @@
 namespace Nekland\YoutubeApi\Http\Auth;
 
 
-use Nekland\BaseApi\Http\Auth\AuthInterface;
+use Nekland\BaseApi\Http\Auth\AuthStrategyInterface;
+use Nekland\BaseApi\Http\Event\RequestEvent;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
 
-class PublicApiAccessAuth implements AuthInterface
+class PublicApiAccessAuth implements AuthStrategyInterface
 {
     /**
      * @var array
      */
     private $options;
 
-    /**
-     * @param array $options
-     * @return self
-     * @throws \Nekland\YoutubeApi\Exception\MissingOptionException
-     */
     public function setOptions(array $options)
     {
         if (empty($options['key'])) {
@@ -38,16 +34,14 @@ class PublicApiAccessAuth implements AuthInterface
         $this->options = $options;
     }
 
-    /**
-     * @param \Guzzle\Http\Message\Request $request
-     */
-    public function auth(\Guzzle\Http\Message\Request $request)
+    public function auth(RequestEvent $event)
     {
-        $url = (string) $request->getUrl();
+        $request = $event->getRequest();
+        $url     = $request->getPath();
 
         $url .= (false === strpos($url, '?') ? '?' : '&');
         $url .= 'key=' . $this->options['key'];
 
-        $request->setUrl($url);
+        $request->setPath($url);
     }
 }
