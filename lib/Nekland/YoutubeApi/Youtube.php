@@ -14,6 +14,7 @@ namespace Nekland\YoutubeApi;
 use Nekland\BaseApi\Api;
 use Nekland\BaseApi\ApiFactory;
 use Nekland\BaseApi\Http\ClientInterface;
+use Nekland\BaseApi\Http\HttpClientFactory;
 use Nekland\YoutubeApi\Http\HttpClient;
 
 /**
@@ -22,6 +23,20 @@ use Nekland\YoutubeApi\Http\HttpClient;
  */
 class Youtube extends ApiFactory
 {
+    /**
+     * @var array
+     */
+    private $options = [
+        'base_url'   => 'https://www.googleapis.com/',
+        'user_agent' => 'php-youtube-api (https://github.com/Nekland/YoutubeApi)'
+    ];
+
+    public function __construct(array $option = [])
+    {
+        $this->options = array_merge_recursive($this->options, $option);
+        parent::__construct(new HttpClientFactory($this->options));
+    }
+
     /**
      * Return array of namespaces where AbstractApi instance are localized
      *
