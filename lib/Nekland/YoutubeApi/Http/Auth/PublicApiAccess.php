@@ -16,7 +16,7 @@ use Nekland\BaseApi\Http\Auth\AuthStrategyInterface;
 use Nekland\BaseApi\Http\Event\RequestEvent;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
 
-class PublicApiAccessAuth implements AuthStrategyInterface
+class PublicApiAccess implements AuthStrategyInterface
 {
     /**
      * @var array

@@ -29,9 +29,9 @@ class Youtube extends ApiFactory
         'user_agent' => 'php-youtube-api (https://github.com/Nekland/YoutubeApi)'
     ];
 
-    public function __construct(array $option = [])
+    public function __construct(array $options = [])
     {
-        $this->options = array_merge_recursive($this->options, $option);
+        $this->options = array_merge($this->options, $options);
         parent::__construct(new HttpClientFactory($this->options));
 
         $this->getAuthFactory()->addNamespace('Nekland\YoutubeApi\Http\Auth');

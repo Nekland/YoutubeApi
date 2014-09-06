@@ -15,10 +15,11 @@ namespace Nekland\YoutubeApi\Http\Auth;
 use Guzzle\Http\Client;
 use Namshi\JOSE\JWS;
 use Nekland\BaseApi\Http\Auth\AuthInterface;
+use Nekland\BaseApi\Http\Auth\AuthStrategyInterface;
 use Nekland\YoutubeApi\Exception\AuthException;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
 
-class ServiceAuth implements AuthInterface
+class Service implements AuthStrategyInterface
 {
     /**
      * @var array
