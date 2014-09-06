@@ -13,7 +13,10 @@ namespace Nekland\YoutubeApi;
 
 use Nekland\BaseApi\Api;
 use Nekland\BaseApi\ApiFactory;
+use Nekland\BaseApi\Http\Auth\AuthFactory;
 use Nekland\BaseApi\Http\HttpClientFactory;
+use Nekland\BaseApi\Transformer\TransformerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
  * @method \Nekland\YoutubeApi\Api\Videos getVideosApi
@@ -29,7 +32,13 @@ class Youtube extends ApiFactory
         'user_agent' => 'php-youtube-api (https://github.com/Nekland/YoutubeApi)'
     ];
 
-    public function __construct(array $options = [])
+    public function __construct(
+        array $options = [],
+        HttpClientFactory $httpClientFactory = null,
+        EventDispatcher $dispatcher = null,
+        TransformerInterface $transformer = null,
+        AuthFactory $authFactory = null
+    )
     {
         $this->options = array_merge($this->options, $options);
         parent::__construct(new HttpClientFactory($this->options));

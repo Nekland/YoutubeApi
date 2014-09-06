@@ -11,7 +11,6 @@
 
 namespace Nekland\YoutubeApi\Http\Auth;
 
-
 use Nekland\BaseApi\Http\Auth\AuthStrategyInterface;
 use Nekland\BaseApi\Http\Event\RequestEvent;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
