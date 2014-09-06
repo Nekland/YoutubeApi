@@ -13,9 +13,7 @@ namespace Nekland\YoutubeApi;
 
 use Nekland\BaseApi\Api;
 use Nekland\BaseApi\ApiFactory;
-use Nekland\BaseApi\Http\ClientInterface;
 use Nekland\BaseApi\Http\HttpClientFactory;
-use Nekland\YoutubeApi\Http\HttpClient;
 
 /**
  * @method \Nekland\YoutubeApi\Api\Videos getVideosApi
@@ -35,6 +33,8 @@ class Youtube extends ApiFactory
     {
         $this->options = array_merge_recursive($this->options, $option);
         parent::__construct(new HttpClientFactory($this->options));
+
+        $this->getAuthFactory()->addNamespace('Nekland\YoutubeApi\Http\Auth');
     }
 
     /**
