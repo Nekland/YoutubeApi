@@ -16,6 +16,7 @@ use Guzzle\Http\Client;
 use Namshi\JOSE\JWS;
 use Nekland\BaseApi\Http\Auth\AuthInterface;
 use Nekland\BaseApi\Http\Auth\AuthStrategyInterface;
+use Nekland\BaseApi\Http\Event\RequestEvent;
 use Nekland\YoutubeApi\Exception\AuthException;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
 
@@ -27,27 +28,11 @@ class Service implements AuthStrategyInterface
     private $options;
 
     /**
-     * @var \Guzzle\Http\ClientInterface
+     * @param RequestEvent $request
      */
-    private $client;
-
-    /**
-     * @param \Guzzle\Http\ClientInterface $client
-     */
-    public function __construct(\Guzzle\Http\ClientInterface $client=null)
+    public function auth(RequestEvent $requestEvent)
     {
-        if (null === $client) {
-            $this->client = new Client();
-        } else {
-            $this->client = $client;
-        }
-    }
-
-    /**
-     * @param \Guzzle\Http\Message\Request $request
-     */
-    public function auth(\Guzzle\Http\Message\Request $request)
-    {
+        $request = $requestEvent->getRequest();
         if (!$request->hasHeader('Authorization')) {
             $token = $this->getToken();
             $request->addHeader('Authorization', 'Bearer '.$token);

@@ -6,6 +6,7 @@ Most changes are because of the new base api release.
 New features
 ------------
 
+* Compatibility with HHVM
 
 Changes
 -----------
