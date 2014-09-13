@@ -11,12 +11,13 @@
 
 namespace Nekland\YoutubeApi\Http\Auth;
 
-
 use Guzzle\Http\Client;
 use Namshi\JOSE\JWS;
+use Nekland\BaseApi\Http\AbstractHttpClient;
 use Nekland\BaseApi\Http\Auth\AuthInterface;
 use Nekland\BaseApi\Http\Auth\AuthStrategyInterface;
 use Nekland\BaseApi\Http\Event\RequestEvent;
+use Nekland\BaseApi\Http\Request;
 use Nekland\YoutubeApi\Exception\AuthException;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
 
@@ -28,14 +29,21 @@ class Service implements AuthStrategyInterface
     private $options;
 
     /**
-     * @param RequestEvent $request
+     * @var AbstractHttpClient
+     */
+    private $client;
+
+    /**
+     * @param RequestEvent $requestEvent
      */
     public function auth(RequestEvent $requestEvent)
     {
         $request = $requestEvent->getRequest();
+
         if (!$request->hasHeader('Authorization')) {
+            $this->client = $requestEvent->getClient();
             $token = $this->getToken();
-            $request->addHeader('Authorization', 'Bearer '.$token);
+            $request->setHeader('Authorization', 'Bearer '.$token);
         }
     }
 
@@ -55,17 +63,17 @@ class Service implements AuthStrategyInterface
 
         $jws->sign($this->getPrivateKey());
 
-        $response = $this->client->post(
+        $response = $this->client->send(new Request(
+            'post',
             'https://accounts.google.com/o/oauth2/token',
-            ['Content-Type' => 'application/x-www-form-urlencoded'],
             [
                 'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
                 'assertion'  => $jws->getTokenString()
             ],
-            ['debug' => true]
-        );
+            ['Content-Type' => 'application/x-www-form-urlencoded']
+        ), false);
 
-        $finalArray = json_decode((string) $response->send()->getBody(), true);
+        $finalArray = json_decode($response, true);
 
         return $finalArray['access_token'];
     }
@@ -110,7 +118,7 @@ class Service implements AuthStrategyInterface
 
     /**
      * @param array $options
-     * @return AuthInterface
+     * @return self
      */
     public function setOptions(array $options)
     {

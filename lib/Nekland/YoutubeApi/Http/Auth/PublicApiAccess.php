@@ -36,11 +36,7 @@ class PublicApiAccess implements AuthStrategyInterface
     public function auth(RequestEvent $event)
     {
         $request = $event->getRequest();
-        $url     = $request->getPath();
 
-        $url .= (false === strpos($url, '?') ? '?' : '&');
-        $url .= 'key=' . $this->options['key'];
-
-        $request->setPath($url);
+        $request->setParameter('key', $this->options['key']);
     }
 }
