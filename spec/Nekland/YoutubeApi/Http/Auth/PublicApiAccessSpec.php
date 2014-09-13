@@ -20,7 +20,7 @@ class PublicApiAccessSpec extends ObjectBehavior
         $requestEvent->getRequest()->willReturn($request);
 
         $request->getPath()->willReturn('http://foo.bar/api');
-        $request->setPath('http://foo.bar/api?key=my_custom_api_key')->shouldBeCalled();
+        $request->setParameter('key','my_custom_api_key')->shouldBeCalled();
 
         $this->setOptions(['key' => 'my_custom_api_key']);
         $this->auth($requestEvent);

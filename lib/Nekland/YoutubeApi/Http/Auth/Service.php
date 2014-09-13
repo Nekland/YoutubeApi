@@ -43,7 +43,7 @@ class Service implements AuthStrategyInterface
         if (!$request->hasHeader('Authorization')) {
             $this->client = $requestEvent->getClient();
             $token = $this->getToken();
-            $request->setHeader('Authorization', 'Bearer '.$token);
+            $request->setHeader('Authorization', 'Bearer ' . $token);
         }
     }
 
