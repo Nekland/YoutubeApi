@@ -25,7 +25,15 @@ use Nekland\YoutubeApi\Api\Behavior\ListTrait;
  */
 class Playlists extends AbstractApi
 {
-    const URL = 'youtube/v3/playlists';
-
     use ListTrait;
+
+    public function getUrl()
+    {
+        return 'youtube/v3/playlists';
+    }
+
+    public function getType()
+    {
+        return 'playlist';
+    }
 }

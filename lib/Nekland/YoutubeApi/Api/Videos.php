@@ -26,7 +26,15 @@ use Nekland\YoutubeApi\Api\Behavior\ListTrait;
  */
 class Videos extends AbstractApi
 {
-    const URL = 'youtube/v3/videos';
-
     use ListTrait;
+
+    public function getUrl()
+    {
+        return 'youtube/v3/videos';
+    }
+
+    public function getType()
+    {
+        return 'video';
+    }
 }

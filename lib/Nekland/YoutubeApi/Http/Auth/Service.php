@@ -21,6 +21,11 @@ use Nekland\BaseApi\Http\Request;
 use Nekland\YoutubeApi\Exception\AuthException;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
 
+/**
+ * Allow Service Auth
+ *
+ * @see https://developers.google.com/accounts/docs/OAuth2#serviceaccount
+ */
 class Service implements AuthStrategyInterface
 {
     /**
