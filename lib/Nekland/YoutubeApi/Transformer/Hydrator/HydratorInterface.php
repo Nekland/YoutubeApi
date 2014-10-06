@@ -15,9 +15,13 @@ namespace Nekland\YoutubeApi\Transformer\Hydrator;
 interface HydratorInterface
 {
     /**
+     * Hydrate a class
+     * Create sub classes and hydrate them if needed
+     *
      * @param string $class
-     * @param array $data
+     * @param mixed  $data
+     * @param array  $exclude
      * @return mixed
      */
-    public function hydrate($class, $data);
+    public function hydrate($class, $data, array $exclude = []);
 }

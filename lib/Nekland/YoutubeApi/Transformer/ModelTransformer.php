@@ -48,15 +48,11 @@ class ModelTransformer implements TransformerInterface
      */
     public function transformList($data, $type)
     {
-        $final = $this->hydrator->hydrate('\Nekland\YoutubeApi\Transformer\Model\Collection', $data);
         $type = $type === 'video' ?
             '\Nekland\YoutubeApi\Transformer\Model\Video' :
             '\Nekland\YoutubeApi\Transformer\Model\Playlist'
         ;
-
-        foreach ($data['items'] as $item) {
-            $final->add($this->hydrator->hydrate($type, $item));
-        }
+        $final = $this->hydrator->hydrateCollection($type, $data);
 
         return $final;
     }

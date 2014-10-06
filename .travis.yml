@@ -3,6 +3,7 @@ language: php
 php:
   - 5.4
   - 5.5
+  - 5.6
   - hhvm
 
 before_script:
@@ -10,6 +11,7 @@ before_script:
 
 script: vendor/bin/phpspec run
 
+# YoutubeAPI should be compatible hhvm but tests are not !
 matrix:
     allow_failures:
         - php: hhvm
