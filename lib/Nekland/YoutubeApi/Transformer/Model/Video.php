@@ -121,7 +121,7 @@ class Video extends Item
      * @param Details\LiveStreamingDetails $liveStreamingDetails
      * @return self
      */
-    public function setLiveStreamingDetails($liveStreamingDetails)
+    public function setLiveStreamingDetails(Details\LiveStreamingDetails $liveStreamingDetails)
     {
         $this->liveStreamingDetails = $liveStreamingDetails;
 
@@ -129,7 +129,7 @@ class Video extends Item
     }
 
     /**
-     * @return array
+     * @return Standard\Player
      */
     public function getPlayer()
     {
@@ -137,10 +137,10 @@ class Video extends Item
     }
 
     /**
-     * @param array $player
+     * @param Standard\Player $player
      * @return self
      */
-    public function setPlayer(Standard\Player$player)
+    public function setPlayer(Standard\Player $player)
     {
         $this->player = $player;
 

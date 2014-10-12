@@ -11,6 +11,8 @@
 
 namespace Nekland\YoutubeApi\Transformer\Model\Details;
 
+use Nekland\YoutubeApi\Transformer\Model\Standard\Location;
+
 class RecordingDetails
 {
     /**
@@ -19,7 +21,7 @@ class RecordingDetails
     private $locationDescription;
 
     /**
-     * @var \Nekland\YoutubeApi\Transformer\Model\Standard\Location
+     * @var Location
      */
     private $location;
 
@@ -27,4 +29,61 @@ class RecordingDetails
      * @var \DateTime
      */
     private $recordingDate;
+
+    /**
+     * @return Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param Location $location
+     * @return self
+     */
+    public function setLocation(Location $location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocationDescription()
+    {
+        return $this->locationDescription;
+    }
+
+    /**
+     * @param string $locationDescription
+     * @return self
+     */
+    public function setLocationDescription($locationDescription)
+    {
+        $this->locationDescription = $locationDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getRecordingDate()
+    {
+        return $this->recordingDate;
+    }
+
+    /**
+     * @param \DateTime $recordingDate
+     * @return self
+     */
+    public function setRecordingDate(\DateTime $recordingDate)
+    {
+        $this->recordingDate = $recordingDate;
+
+        return $this;
+    }
 }
