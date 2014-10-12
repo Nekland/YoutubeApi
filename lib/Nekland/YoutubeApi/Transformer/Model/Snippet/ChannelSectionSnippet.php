@@ -12,7 +12,7 @@
 namespace Nekland\YoutubeApi\Transformer\Model\Snippet;
 
 
-class ChannelSectionSnippet extends Snippet
+class ChannelSectionSnippet extends GuideCategorySnippet
 {
     /**
      * @var string
@@ -25,38 +25,9 @@ class ChannelSectionSnippet extends Snippet
     private $type;
 
     /**
-     * @var string
-     */
-    private $channelId;
-
-    /**
-     * @var string
-     */
-    private $title;
-
-    /**
      * @var int
      */
     private $position;
-
-    /**
-     * @return string
-     */
-    public function getChannelId()
-    {
-        return $this->channelId;
-    }
-
-    /**
-     * @param string $channelId
-     * @return self
-     */
-    public function setChannelId($channelId)
-    {
-        $this->channelId = $channelId;
-
-        return $this;
-    }
 
     /**
      * @return int
@@ -92,25 +63,6 @@ class ChannelSectionSnippet extends Snippet
     public function setStyle($style)
     {
         $this->style = $style;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
 
         return $this;
     }
