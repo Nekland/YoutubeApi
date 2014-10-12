@@ -80,7 +80,7 @@ class Hydrator implements HydratorInterface
         $parameters = $method->getParameters();
 
         if ($parameters[0]->isArray()) {
-            $adder = 'add' . ucfirst($dataKey);
+            $adder = 'add' . ucfirst($this->removeLastS($dataKey));
 
             if ($reflection->hasMethod($adder)) {
                 $method = $reflection->getMethod($adder);
@@ -88,5 +88,18 @@ class Hydrator implements HydratorInterface
         }
 
         return $method;
+    }
+
+    /**
+     * @param string $str
+     * @return string
+     */
+    private function removeLastS($str)
+    {
+        if (substr($str, -1) === 's') {
+            return substr($str, 0, strlen($str)-1);
+        }
+
+        return $str;
     }
 }

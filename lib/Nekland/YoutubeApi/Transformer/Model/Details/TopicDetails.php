@@ -22,4 +22,42 @@ class TopicDetails
      * @var string[]
      */
     private $relevantTopicIds;
+
+    /**
+     * @return \string[]
+     */
+    public function getRelevantTopicIds()
+    {
+        return $this->relevantTopicIds;
+    }
+
+    /**
+     * @param \string[] $relevantTopicIds
+     * @return self
+     */
+    public function setRelevantTopicIds($relevantTopicIds)
+    {
+        $this->relevantTopicIds = $relevantTopicIds;
+
+        return $this;
+    }
+
+    /**
+     * @return \string[]
+     */
+    public function getTopicIds()
+    {
+        return $this->topicIds;
+    }
+
+    /**
+     * @param \string[] $topicIds
+     * @return self
+     */
+    public function setTopicIds($topicIds)
+    {
+        $this->topicIds = $topicIds;
+
+        return $this;
+    }
 }
