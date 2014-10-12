@@ -53,6 +53,10 @@ class ModelTransformer implements TransformerInterface
                     return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\PlaylistItem');
                 case 'youtube#searchListResponse':
                     return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\Search');
+                case 'youtube#subscriptionListResponse':
+                    return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\Subscription');
+                case 'youtube#videoCategoryListResponse':
+                    return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\VideoCategory');
             }
         }
     }

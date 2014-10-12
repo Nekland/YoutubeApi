@@ -11,8 +11,7 @@
 
 namespace Nekland\YoutubeApi\Transformer\Model\Snippet;
 
-
-use Nekland\YoutubeApi\Transformer\Model\Details\Thumbnail;
+use Nekland\YoutubeApi\Transformer\Model\Standard\Thumbnail;
 
 class Snippet
 {
@@ -56,7 +55,7 @@ class Snippet
     }
 
     /**
-     * @return \Nekland\YoutubeApi\Transformer\Model\Details\Thumbnail[]
+     * @return Thumbnail[]
      */
     public function getThumbnails()
     {
@@ -64,7 +63,7 @@ class Snippet
     }
 
     /**
-     * @param \Nekland\YoutubeApi\Transformer\Model\Details\Thumbnail[] $thumbnails
+     * @param Thumbnail[] $thumbnails
      * @return self
      */
     public function setThumbnails(array $thumbnails)

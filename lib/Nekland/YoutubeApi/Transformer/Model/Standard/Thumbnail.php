@@ -9,7 +9,7 @@
  * on the root directory of this project
  */
 
-namespace Nekland\YoutubeApi\Transformer\Model\Details;
+namespace Nekland\YoutubeApi\Transformer\Model\Standard;
 
 class Thumbnail
 {
