@@ -37,7 +37,7 @@ class Video extends Item
     private $statistics;
 
     /**
-     * @var array
+     * @var Standard\Player
      */
     private $player;
 
@@ -86,6 +86,7 @@ class Video extends Item
     public function setContentDetails(Details\VideoDetails $contentDetails)
     {
         $this->contentDetails = $contentDetails;
+
         return $this;
     }
 
@@ -104,6 +105,7 @@ class Video extends Item
     public function setFileDetails(Details\FileDetails $fileDetails)
     {
         $this->fileDetails = $fileDetails;
+
         return $this;
     }
 
@@ -122,6 +124,7 @@ class Video extends Item
     public function setLiveStreamingDetails($liveStreamingDetails)
     {
         $this->liveStreamingDetails = $liveStreamingDetails;
+
         return $this;
     }
 
@@ -137,9 +140,10 @@ class Video extends Item
      * @param array $player
      * @return self
      */
-    public function setPlayer($player)
+    public function setPlayer(Standard\Player$player)
     {
         $this->player = $player;
+
         return $this;
     }
 
@@ -195,6 +199,7 @@ class Video extends Item
     public function setSnippet(VideoSnippet $snippet)
     {
         $this->snippet = $snippet;
+
         return $this;
     }
 
@@ -213,6 +218,7 @@ class Video extends Item
     public function setStatistics(Statistics\VideoStatistics $statistics)
     {
         $this->statistics = $statistics;
+
         return $this;
     }
 
@@ -231,6 +237,7 @@ class Video extends Item
     public function setStatus(Status\VideoStatus $status)
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -249,6 +256,7 @@ class Video extends Item
     public function setSuggestions(Suggestions\VideoSuggestions $suggestions)
     {
         $this->suggestions = $suggestions;
+
         return $this;
     }
 
@@ -267,6 +275,7 @@ class Video extends Item
     public function setTopicDetails(Details\TopicDetails $topicDetails)
     {
         $this->topicDetails = $topicDetails;
+
         return $this;
     }
 }

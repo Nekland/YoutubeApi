@@ -36,7 +36,9 @@ class ModelTransformer implements TransformerInterface
 
             switch ($data['kind']) {
                 case 'youtube#videoListResponse':
-                    return $this->transformList($data, 'video');
+                    return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\Video');
+                case 'youtube#playlistListResponse':
+                    return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\Playlist');
             }
         }
     }
@@ -48,10 +50,6 @@ class ModelTransformer implements TransformerInterface
      */
     public function transformList($data, $type)
     {
-        $type = $type === 'video' ?
-            '\Nekland\YoutubeApi\Transformer\Model\Video' :
-            '\Nekland\YoutubeApi\Transformer\Model\Playlist'
-        ;
         $final = $this->hydrator->hydrateCollection($type, $data);
 
         return $final;

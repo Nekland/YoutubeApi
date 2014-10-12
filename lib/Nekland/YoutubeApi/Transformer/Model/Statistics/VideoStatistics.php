@@ -11,13 +11,8 @@
 
 namespace Nekland\YoutubeApi\Transformer\Model\Statistics;
 
-class VideoStatistics
+class VideoStatistics extends Statistics
 {
-    /**
-     * @var integer
-     */
-    private $viewCount;
-
     /**
      * @var integer
      */
@@ -34,7 +29,59 @@ class VideoStatistics
     private $favoriteCount;
 
     /**
-     * @var integer
+     * @return int
      */
-    private $commentCount;
+    public function getDislikeCount()
+    {
+        return $this->dislikeCount;
+    }
+
+    /**
+     * @param int $dislikeCount
+     * @return self
+     */
+    public function setDislikeCount($dislikeCount)
+    {
+        $this->dislikeCount = $dislikeCount;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFavoriteCount()
+    {
+        return $this->favoriteCount;
+    }
+
+    /**
+     * @param int $favoriteCount
+     * @return self
+     */
+    public function setFavoriteCount($favoriteCount)
+    {
+        $this->favoriteCount = $favoriteCount;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLikeCount()
+    {
+        return $this->likeCount;
+    }
+
+    /**
+     * @param int $likeCount
+     * @return self
+     */
+    public function setLikeCount($likeCount)
+    {
+        $this->likeCount = $likeCount;
+
+        return $this;
+    }
 }

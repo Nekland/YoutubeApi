@@ -11,7 +11,8 @@
 
 namespace Nekland\YoutubeApi\Transformer\Model\Snippet;
 
-class VideoSnippet extends Snippet
+
+class PlaylistSnippet extends Snippet
 {
     /**
      * @var string
@@ -27,35 +28,6 @@ class VideoSnippet extends Snippet
      * @var string[]
      */
     private $tags;
-
-    /**
-     * @var string
-     */
-    private $categoryId;
-
-    /**
-     * @var string
-     */
-    private $liveBroadcastContent;
-
-    /**
-     * @return string
-     */
-    public function getCategoryId()
-    {
-        return $this->categoryId;
-    }
-
-    /**
-     * @param string $categoryId
-     * @return self
-     */
-    public function setCategoryId($categoryId)
-    {
-        $this->categoryId = $categoryId;
-
-        return $this;
-    }
 
     /**
      * @return string
@@ -91,25 +63,6 @@ class VideoSnippet extends Snippet
     public function setChannelTitle($channelTitle)
     {
         $this->channelTitle = $channelTitle;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLiveBroadcastContent()
-    {
-        return $this->liveBroadcastContent;
-    }
-
-    /**
-     * @param string $liveBroadcastContent
-     * @return self
-     */
-    public function setLiveBroadcastContent($liveBroadcastContent)
-    {
-        $this->liveBroadcastContent = $liveBroadcastContent;
 
         return $this;
     }

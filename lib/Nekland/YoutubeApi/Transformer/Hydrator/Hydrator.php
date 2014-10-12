@@ -53,20 +53,40 @@ class Hydrator implements HydratorInterface
                 continue;
             }
 
-            $setter = 'set' . ucfirst($dataKey);
-
-            $method = $reflection->getMethod($setter);
+            $method = $this->getMethod($reflection, $dataKey);
             $parameter = $method->getParameters();
             $parameter = $parameter[0];
 
             if ($parameter->getClass() !== null) {
                 $subItemClass = $parameter->getClass();
-                $item->$setter($this->hydrate($subItemClass->getName(), $dataItem));
+                $method->invoke($item, [$this->hydrate($subItemClass->getName(), $dataItem)]);
             } else {
-                $item->$setter($dataItem);
+                $method->invoke($item, [$dataItem]);
             }
         }
 
         return $item;
+    }
+
+    /**
+     * @param \ReflectionClass $reflection
+     * @param string           $dataKey
+     * @return \ReflectionMethod
+     */
+    private function getMethod(\ReflectionClass $reflection, $dataKey)
+    {
+        $setter = 'set' . ucfirst($dataKey);
+        $method = $reflection->getMethod($setter);
+        $parameters = $method->getParameters();
+
+        if ($parameters[0]->isArray()) {
+            $adder = 'add' . ucfirst($dataKey);
+
+            if ($reflection->hasMethod($adder)) {
+                $method = $reflection->getMethod($adder);
+            }
+        }
+
+        return $method;
     }
 }
