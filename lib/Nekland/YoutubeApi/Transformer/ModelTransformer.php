@@ -49,6 +49,10 @@ class ModelTransformer implements TransformerInterface
                     return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\I18nLanguage');
                 case 'youtube#i18nRegionListResponse':
                     return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\I18nRegion');
+                case 'youtube#playlistItemListResponse':
+                    return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\PlaylistItem');
+                case 'youtube#searchListResponse':
+                    return $this->transformList($data, '\Nekland\YoutubeApi\Transformer\Model\Search');
             }
         }
     }
