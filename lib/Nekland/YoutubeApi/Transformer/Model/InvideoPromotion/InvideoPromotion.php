@@ -12,6 +12,9 @@
 namespace Nekland\YoutubeApi\Transformer\Model\InvideoPromotion;
 
 
+use Nekland\YoutubeApi\Transformer\Model\Standard\Position;
+use Nekland\YoutubeApi\Transformer\Model\Standard\Timing;
+
 class InvideoPromotion
 {
     /**
@@ -20,7 +23,7 @@ class InvideoPromotion
     private $defaultTiming;
 
     /**
-     * @var array
+     * @var Position
      */
     private $position;
 
@@ -89,7 +92,7 @@ class InvideoPromotion
     }
 
     /**
-     * @return array
+     * @return Position
      */
     public function getPosition()
     {
@@ -97,10 +100,10 @@ class InvideoPromotion
     }
 
     /**
-     * @param array $position
+     * @param Position $position
      * @return self
      */
-    public function setPosition($position)
+    public function setPosition(Position $position)
     {
         $this->position = $position;
 

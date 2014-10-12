@@ -12,6 +12,8 @@
 namespace Nekland\YoutubeApi\Transformer\Model\InvideoPromotion;
 
 
+use Nekland\YoutubeApi\Transformer\Model\Standard\Timing;
+
 class Item
 {
     /**
