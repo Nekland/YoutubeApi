@@ -185,7 +185,7 @@ class Collection implements \IteratorAggregate, \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        return isset($this->items[$offset]);
+        return $offset === 'items' || isset($this->items[$offset]);
     }
 
     /**
@@ -200,6 +200,10 @@ class Collection implements \IteratorAggregate, \ArrayAccess
      */
     public function offsetGet($offset)
     {
+        if ($offset === 'items') {
+            return $this->items;
+        }
+
         return $this->items[$offset];
     }
 

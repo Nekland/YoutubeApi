@@ -21,6 +21,9 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 /**
  * @method \Nekland\YoutubeApi\Api\Videos getVideosApi
  * @method \Nekland\YoutubeApi\Api\Playlists getPlaylistsApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getActivitiesApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getChannelsApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getChannelSectionsApi
  */
 class Youtube extends ApiFactory
 {

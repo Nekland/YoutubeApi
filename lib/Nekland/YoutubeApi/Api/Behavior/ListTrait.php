@@ -43,10 +43,6 @@ trait ListTrait
     {
         $res = $this->listById($id, $parts, $otherParameters);
 
-        if ($res instanceof Collection) {
-            return $res[0];
-        }
-
         return $res['items'][0];
     }
 
