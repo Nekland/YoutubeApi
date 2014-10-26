@@ -11,7 +11,6 @@
 
 namespace Nekland\YoutubeApi\Transformer;
 
-
 use Nekland\BaseApi\Transformer\TransformerInterface;
 use Nekland\YoutubeApi\Transformer\Hydrator\Hydrator;
 use Nekland\YoutubeApi\Transformer\Hydrator\HydratorInterface;

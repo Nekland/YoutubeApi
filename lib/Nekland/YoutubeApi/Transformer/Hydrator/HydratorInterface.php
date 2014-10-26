@@ -24,4 +24,11 @@ interface HydratorInterface
      * @return mixed
      */
     public function hydrate($class, $data, array $exclude = []);
+
+    /**
+     * @param string $class
+     * @param array  $data
+     * @return \Nekland\YoutubeApi\Transformer\Model\Collection
+     */
+    public function hydrateCollection($class, $data);
 }
