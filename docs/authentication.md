@@ -28,10 +28,10 @@ Now you have your `APIKEY` everything is easy :) .
 <?php
 
 $youtube = new Youtube();
-$youtube->authentication([
-    'PublicApiAccess',
+$youtube->authenticate(
+    'PublicApiAccessAuth',
     ['key' => 'MY_YOUTUBE_APIKEY']
-]);
+);
 ```
 
 Service Account (via OAuth)
