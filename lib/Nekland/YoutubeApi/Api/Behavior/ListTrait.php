@@ -11,6 +11,8 @@
 
 namespace Nekland\YoutubeApi\Api\Behavior;
 
+use Nekland\YoutubeApi\Transformer\Model\Collection;
+
 trait ListTrait
 {
     /**
@@ -21,12 +23,12 @@ trait ListTrait
      */
     public function listById($id, array $parts = ['snippet'], array $otherParameters = [])
     {
-        $parameters = array_merge(
+        $body = array_merge(
             ['part' => implode(',', $parts), 'id' => $id],
             $otherParameters
         );
 
-        return $this->get(static::URL, $parameters);
+        return $this->get($this->getUrl(), $body);
     }
 
     /**
@@ -39,7 +41,9 @@ trait ListTrait
      */
     public function getById($id, array $parts = ['snippet'], array $otherParameters = [])
     {
-        return $this->listById($id, $parts, $otherParameters)['items'][0];
+        $res = $this->listById($id, $parts, $otherParameters);
+
+        return $res['items'][0];
     }
 
     /**
@@ -50,12 +54,12 @@ trait ListTrait
      */
     public function listBy(array $filters, array $parts = ['snippet'], array $otherParameters = [])
     {
-        $parameters = array_merge(
+        $body = array_merge(
             ['part' => $parts],
             $filters,
             $otherParameters
         );
 
-        return $this->get(static::URL, $parameters);
+        return $this->get($this->getUrl(), $body);
     }
 }

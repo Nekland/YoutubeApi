@@ -7,7 +7,7 @@ First retrieve the playlist api object (`Nekland\YoutubeApi\Api\Playlists`).
 <?php
 
 $youtube = new Youtube();
-$playlistApi = $youtube->api('playlists');
+$playlistApi = $youtube->getPlayslistsApi();
 ```
 
 List playlists
@@ -72,6 +72,6 @@ The day this lines are written, it's:
 * id: 0
 * player: 0
 * snippet: 2
-*status: 2
+* status: 2
 
 > For now the playlist api only retrieve information. More coming ! PRs are accepted on the topic :) .

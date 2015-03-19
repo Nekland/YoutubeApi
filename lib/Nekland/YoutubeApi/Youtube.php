@@ -12,37 +12,50 @@
 namespace Nekland\YoutubeApi;
 
 use Nekland\BaseApi\Api;
-use Nekland\BaseApi\Http\ClientInterface;
-use Nekland\YoutubeApi\Http\HttpClient;
+use Nekland\BaseApi\ApiFactory;
+use Nekland\BaseApi\Http\Auth\AuthFactory;
+use Nekland\BaseApi\Http\HttpClientFactory;
+use Nekland\BaseApi\Transformer\TransformerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
-class Youtube extends Api
+/**
+ * @method \Nekland\YoutubeApi\Api\Videos getVideosApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getPlaylistsApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getActivitiesApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getChannelsApi
+ * @method \Nekland\YoutubeApi\Api\Playlists getChannelSectionsApi
+ */
+class Youtube extends ApiFactory
 {
     /**
-     * @param ClientInterface $httpClient
+     * @var array
      */
-    public function __construct(ClientInterface $httpClient=null)
+    private $options = [
+        'base_url'   => 'https://www.googleapis.com/',
+        'user_agent' => 'php-youtube-api (https://github.com/Nekland/YoutubeApi)'
+    ];
+
+    public function __construct(
+        array $options = [],
+        HttpClientFactory $httpClientFactory = null,
+        EventDispatcher $dispatcher = null,
+        TransformerInterface $transformer = null,
+        AuthFactory $authFactory = null
+    )
     {
-        if (null === $httpClient) {
-            parent::__construct(new HttpClient());
-        } else {
-            parent::__construct($httpClient);
-        }
+        $this->options = array_merge($this->options, $options);
+        parent::__construct(new HttpClientFactory($this->options));
+
+        $this->getAuthFactory()->addNamespace('Nekland\YoutubeApi\Http\Auth');
     }
 
     /**
-     * @param string $name
-     * @return Api\AbstractApi
-     * @throws \InvalidArgumentException
+     * Return array of namespaces where AbstractApi instance are localized
+     *
+     * @return string[] Example: ['Nekland\BaseApi\Api']
      */
-    public function api($name)
+    protected function getApiNamespaces()
     {
-        switch($name) {
-            case 'videos':
-                return new \Nekland\YoutubeApi\Api\Videos($this);
-            case 'playlists':
-                return new \Nekland\YoutubeApi\Api\Playlists($this);
-            default:
-                throw new \InvalidArgumentException(sprintf('Undefined api instance called: "%s"', $name));
-        }
+        return ['Nekland\YoutubeApi\Api'];
     }
 }

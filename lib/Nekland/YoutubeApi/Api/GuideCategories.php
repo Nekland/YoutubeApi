@@ -11,29 +11,25 @@
 
 namespace Nekland\YoutubeApi\Api;
 
+
 use Nekland\BaseApi\Api\AbstractApi;
 use Nekland\YoutubeApi\Api\Behavior\ListTrait;
 
 /**
- * Class Playlists
+ * Class GuideCategories
  *
  * Note about the "parts" array: it can take the following values:
- * id, contentDetails, player, snippet, status.
+ * snippet
  *
- * @see https://developers.google.com/youtube/v3/docs/playlists/list for more information about paramaters
- * @see https://developers.google.com/youtube/v3/docs/playlists#resource for more information about json format
+ * @see https://developers.google.com/youtube/v3/docs/guideCategories/list for more information about paramaters
+ * @see https://developers.google.com/youtube/v3/docs/guideCategories#resource for more information about json format
  */
-class Playlists extends AbstractApi
+class GuideCategories extends AbstractApi
 {
     use ListTrait;
 
     public function getUrl()
     {
-        return 'youtube/v3/playlists';
-    }
-
-    public function getType()
-    {
-        return 'playlist';
+        return 'youtube/v3/guideCategories';
     }
 }
