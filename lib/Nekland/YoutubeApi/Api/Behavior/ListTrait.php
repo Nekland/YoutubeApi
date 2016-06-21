@@ -51,7 +51,7 @@ trait ListTrait
     public function listBy(array $filters, array $parts = ['snippet'], array $otherParameters = [])
     {
         $parameters = array_merge(
-            ['part' => $parts],
+            ['part' => implode(',', $parts)],
             $filters,
             $otherParameters
         );
