@@ -12,7 +12,6 @@
 namespace Nekland\Tests\Api;
 
 
-
 class VideosTest extends TestCase
 {
     /**
@@ -21,12 +20,32 @@ class VideosTest extends TestCase
     public function shouldReturnYoutubeArrayAsJson()
     {
         $youtube = $this->getYoutubeMock(['get' => $this->getYoutubeList()]);
-        /** @var \Nekland\YoutubeApi\Api\Playlists $playlists */
-        $playlists  = $youtube->api('playlists');
+        /** @var \Nekland\YoutubeApi\Api\Videos $videos */
+        $videos  = $youtube->api('videos');
 
-        $this->assertEquals($playlists->listById('DR7e0DoHZ2Y')['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
-        $this->assertEquals($playlists->getById('DR7e0DoHZ2Y')['id'], 'DR7e0DoHZ2Y');
-        $this->assertEquals($playlists->listBy(['id' => 'DR7e0DoHZ2Y'])['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
+        $this->assertEquals($videos->listById('PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f')['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
+        $this->assertEquals($videos->getById('PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f')['id'], 'DR7e0DoHZ2Y');
+        $this->assertEquals($videos->listBy(['id' => 'PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f'])['etag'], '"X98aQHqGvPBJLZLOiSGUHCM9jnE/DqrNg5r4X93fnTIO0si3XjQXUwY"');
+    }
+
+
+    public function shouldThrowExceptionIfNoItemFound()
+    {
+        $youtube = $this->getYoutubeMock(['get' => '{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/q9wh51deRpP1b7X8Nc3D-bdBxqs\"",
+ "pageInfo": {
+  "totalResults": 0,
+  "resultsPerPage": 0
+ },
+ "items": []
+}
+'
+        ]);
+
+        $this->expectException('Nekland\YoutubeApi\Exception\NotFoundItemException');
+
+        $youtube->api('videos')->listById('id_that_doesnt_exists');
     }
 
     private function getYoutubeList()
