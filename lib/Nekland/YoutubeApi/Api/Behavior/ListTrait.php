@@ -11,6 +11,8 @@
 
 namespace Nekland\YoutubeApi\Api\Behavior;
 
+use Nekland\YoutubeApi\Exception\NotFoundItemException;
+
 trait ListTrait
 {
     /**
@@ -36,10 +38,16 @@ trait ListTrait
      * @param  array  $parts
      * @param  array  $otherParameters
      * @return array
+     * @throws NotFoundItemException
      */
     public function getById($id, array $parts = ['snippet'], array $otherParameters = [])
     {
-        return $this->listById($id, $parts, $otherParameters)['items'][0];
+        $data = $this->listById($id, $parts, $otherParameters);
+        if (empty($data['items'])) {
+            throw new NotFoundItemException();
+        }
+
+        return $data['items'][0];
     }
 
     /**

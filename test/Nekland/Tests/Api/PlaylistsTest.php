@@ -23,12 +23,12 @@ class PlaylistsTest extends TestCase
     public function shouldReturnYoutubeArrayAsJson()
     {
         $youtube = $this->getYoutubeMock(['get' => $this->getPlaylistsList()]);
-        /** @var \Nekland\YoutubeApi\Api\Videos $videos */
-        $videos  = $youtube->api('videos');
+        /** @var \Nekland\YoutubeApi\Api\Playlists $playlists */
+        $playlists  = $youtube->api('playlists');
 
-        $this->assertEquals($videos->listById('PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f')['etag'], '"gMjDJfS6nsym0T-NKCXALC_u_rM/OS-dz8DrzAjFW7CsH_RCbY99MJc"');
-        $this->assertEquals($videos->getById('PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f')['id'], 'PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f');
-        $this->assertEquals($videos->listBy(['id' => 'PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f'])['etag'], '"gMjDJfS6nsym0T-NKCXALC_u_rM/OS-dz8DrzAjFW7CsH_RCbY99MJc"');
+        $this->assertEquals($playlists->listById('DR7e0DoHZ2Y')['etag'], '"gMjDJfS6nsym0T-NKCXALC_u_rM/OS-dz8DrzAjFW7CsH_RCbY99MJc"');
+        $this->assertEquals($playlists->getById('DR7e0DoHZ2Y')['id'], 'PLXONb89nemXsCa5-v7kO8qbLnCjG9O80f');
+        $this->assertEquals($playlists->listBy(['id' => 'DR7e0DoHZ2Y'])['etag'], '"gMjDJfS6nsym0T-NKCXALC_u_rM/OS-dz8DrzAjFW7CsH_RCbY99MJc"');
     }
 
     private function getPlaylistsList()
