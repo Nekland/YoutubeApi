@@ -116,7 +116,7 @@ class ServiceAuth implements AuthInterface
             return $res['pkey'];
         }
 
-        throw new AuthException(sprintf('The certificate "%" looks wrong PHP cannot open it.', $file));
+        throw new AuthException(sprintf('The key to open the p12 "%" file looks wrong, or the file is malformed.', $file));
     }
 
     /**

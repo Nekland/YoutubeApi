@@ -35,8 +35,7 @@ final class JsonFileServiceAuth extends ServiceAuth
     }
 
     /**
-     * @return string
-     * @throws \Nekland\YoutubeApi\Exception\AuthException
+     * {@inheritdoc}
      */
     protected function getPrivateKey()
     {
@@ -48,6 +47,7 @@ final class JsonFileServiceAuth extends ServiceAuth
 
     /**
      * @return array
+     * @throws \Nekland\YoutubeApi\Exception\MissingOptionException if the required option is not set.
      */
     private function loadFile()
     {

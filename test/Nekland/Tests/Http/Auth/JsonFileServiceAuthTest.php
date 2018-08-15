@@ -41,4 +41,14 @@ class JsonFileServiceAuthTest extends \PHPUnit_Framework_TestCase
 
         $this->assertContains('ya29.1.AADHN_WnGjqYiAcnONRLFDOfXia5XZLFO4RSyEhWtQPAvYpgPYiQj89c7UsrAs5_',(string)$request->getHeader('Authorization'));
     }
+
+    /**
+     * @expectedException \Nekland\YoutubeApi\Exception\MissingOptionException
+     */
+    public function testItThrowsExceptionIfOptionMissing()
+    {
+        $auth = new JsonFileServiceAuth($this->prophesize(ClientInterface::class)->reveal());
+        $request = new Request('POST', 'http://fake.com');
+        $auth->auth($request);
+    }
 }
