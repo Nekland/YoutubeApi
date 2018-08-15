@@ -1,0 +1,11 @@
+{
+    "type": "service_account",
+    "project_id": "probably-awesome-words",
+    "private_key_id": "c00a725b37c4fbe08dcf00065cacf3cc9212091f",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEAzgCjOHdMxlhw/Hsw\neWcPwy3JVSPOjo51PfYnBEfMcc0wybzyU1V8tghP0L+OBeUOobSHnBIKUy9NBt2K\nE10U6QIDAQABAkEAm4yjsqlykXqKpjsm2STXJBvYoK9O8xnisYzC3VqRp4NbaejK\noJ47rvmAUG2WLOBxGzJt5qVBVCAZfgTlWoVQmQIhAPMllmLaOWgNdzLLLasRriaP\nhGeuchiwMwnnlcxYn1z3AiEA2ORj3sVJFfdZJ1EWpd3c9zhRFSGj6sJw+Jtp8w7A\nBR8CIBrnyeBebYPKGaqRORh4+GBj+S7P6ug4dy1dZwIZvGi5AiAsLmoBqSJ4LQim\nL6hzZTxrx7cMnOutGKq2mcH9VxXadQIhALYNeunK3qONUjOziMjkKXdAYsvpNnwW\nqnKidT/UBG6E\n-----END PRIVATE KEY-----","client_email": "1064620541389-pb9geh8tj1rksuiagq1saoe88po7bjjs@developer.gserviceaccount.com",
+    "client_id": "myemail_for_google_service@googleapi_etc.com",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/myemail_for_google_service@googleapi_etc.com"
+}

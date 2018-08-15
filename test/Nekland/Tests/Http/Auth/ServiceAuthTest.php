@@ -11,12 +11,13 @@
 
 namespace Nekland\Tests\Http\Auth;
 
-
 use Guzzle\Http\Message\Request;
 use Nekland\YoutubeApi\Http\Auth\ServiceAuth;
 
 class ServiceAuthTest extends \PHPUnit_Framework_TestCase
 {
+    use AuthServiceTrait;
+
     /**
      * @test
      */
@@ -25,7 +26,7 @@ class ServiceAuthTest extends \PHPUnit_Framework_TestCase
         $auth = new ServiceAuth();
         $this->assertInstanceOf('Nekland\\YoutubeApi\\Http\\Auth\\ServiceAuth', $auth);
 
-        $auth = new ServiceAuth($this->getMock('Guzzle\\Http\\ClientInterface'));
+        $auth = new ServiceAuth($this->prophesize('Guzzle\\Http\\ClientInterface')->reveal());
         $this->assertInstanceOf('Nekland\\YoutubeApi\\Http\\Auth\\ServiceAuth', $auth);
     }
 
@@ -40,46 +41,5 @@ class ServiceAuthTest extends \PHPUnit_Framework_TestCase
         $auth->auth($request);
 
         $this->assertContains('ya29.1.AADHN_WnGjqYiAcnONRLFDOfXia5XZLFO4RSyEhWtQPAvYpgPYiQj89c7UsrAs5_',(string)$request->getHeader('Authorization'));
-    }
-
-    private function getClientMock()
-    {
-        $client = $this->getMock('Guzzle\\Http\\ClientInterface');
-
-        $request = $this->getMock('Guzzle\\Http\\Message\\EntityEnclosingRequestInterface');
-
-        $response = $this
-            ->getMockBuilder('Guzzle\\Http\\Message\\Response')
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
-        $response
-            ->expects($this->any())
-            ->method('getBody')
-            ->willReturn($this->getGoogleResponse())
-        ;
-
-        $request
-            ->expects($this->any())
-            ->method('send')
-            ->willReturn($response)
-        ;
-
-        $client
-            ->expects($this->any())
-            ->method('post')
-            ->willReturn($request)
-        ;
-
-        return $client;
-    }
-
-    private function getGoogleResponse()
-    {
-        return '{
-    "access_token" : "ya29.1.AADHN_WnGjqYiAcnONRLFDOfXia5XZLFO4RSyEhWtQPAvYpgPYiQj89c7UsrAs5_",
-    "token_type" : "Bearer",
-    "expires_in" : 3600
-}';
     }
 }

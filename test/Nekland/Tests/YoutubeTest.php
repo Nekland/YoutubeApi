@@ -30,7 +30,7 @@ class YoutubeTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldAllowToPassHttpClientToConstructor()
     {
-        $api = new Youtube($this->getMock('Nekland\\BaseApi\\Http\\ClientInterface'));
+        $api = new Youtube($this->prophesize('Nekland\\BaseApi\\Http\\ClientInterface')->reveal());
         $this->assertInstanceOf('Nekland\\BaseApi\\Http\\ClientInterface', $api->getClient());
     }
 }

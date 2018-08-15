@@ -13,6 +13,7 @@ namespace Nekland\Tests\Api;
 
 
 use Nekland\YoutubeApi\Youtube;
+use Prophecy\Argument;
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {
@@ -22,15 +23,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected function getYoutubeMock(array $data)
     {
-        $httpClient = $this->getMock('Nekland\BaseApi\Http\ClientInterface');
+        $httpClient = $this->prophesize('Nekland\BaseApi\Http\ClientInterface');
 
         foreach($data as $method => $return) {
-            $httpClient->expects($this->any())
-                ->method($method)
-                ->willReturn($return)
-            ;
+            $httpClient->$method(Argument::cetera())->willReturn($return);
         }
 
-        return new Youtube($httpClient);
+        return new Youtube($httpClient->reveal());
     }
 }
