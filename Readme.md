@@ -27,8 +27,8 @@ $youtube = new Youtube();
 
 // You have to authenticate to access the youtube api
 $youtube->authenticate(
-    'ServiceAuth',
-    ['cert_file' => 'my_google_certificate', 'email' => 'myemail_for_google_service@googleapi_etc.com']
+    'JsonFileServiceAuth',
+    ['json_file' => 'my_google_certificate.json']
 );
 
 // The info variable will contains an array of data returned by google

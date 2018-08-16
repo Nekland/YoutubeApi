@@ -18,22 +18,30 @@ use Nekland\BaseApi\Http\Auth\AuthInterface;
 use Nekland\YoutubeApi\Exception\AuthException;
 use Nekland\YoutubeApi\Exception\MissingOptionException;
 
+/**
+ * Class ServiceAuth
+ *
+ * Options:
+ *      email: google api service account
+ *      cert_file: path to the file that contain the certificate
+ *      cert_password: password to decrypt the (p12) certificate
+ */
 class ServiceAuth implements AuthInterface
 {
     /**
      * @var array
      */
-    private $options;
+    protected $options;
 
     /**
      * @var \Guzzle\Http\ClientInterface
      */
-    private $client;
+    protected $client;
 
     /**
      * @param \Guzzle\Http\ClientInterface $client
      */
-    public function __construct(\Guzzle\Http\ClientInterface $client=null)
+    public function __construct(\Guzzle\Http\ClientInterface $client = null)
     {
         if (null === $client) {
             $this->client = new Client();
@@ -60,9 +68,9 @@ class ServiceAuth implements AuthInterface
     {
         $jws = new JWS('RS256');
         $jws->setPayload(array(
-            'iss'   => $this->getOption('email'),
+            'iss'   => $this->getIss(),
             'scope' => 'https://www.googleapis.com/auth/youtube',
-            'aud'   =>'https://accounts.google.com/o/oauth2/token',
+            'aud'   =>'https://www.googleapis.com/oauth2/v4/token',
             'exp'   => time() + 60,
             'iat'   => time()
         ));
@@ -86,9 +94,17 @@ class ServiceAuth implements AuthInterface
 
     /**
      * @return string
+     */
+    protected function getIss()
+    {
+        return $this->getOption('email');
+    }
+
+    /**
+     * @return string
      * @throws \Nekland\YoutubeApi\Exception\AuthException
      */
-    private function getPrivateKey()
+    protected function getPrivateKey()
     {
         $file            = $this->getOption('cert_file');
         $res             = array();
@@ -100,7 +116,7 @@ class ServiceAuth implements AuthInterface
             return $res['pkey'];
         }
 
-        throw new AuthException(sprintf('The certificate "%" looks wrong PHP cannot open it.', $file));
+        throw new AuthException(sprintf('The key to open the p12 "%" file looks wrong, or the file is malformed.', $file));
     }
 
     /**
@@ -109,7 +125,7 @@ class ServiceAuth implements AuthInterface
      * @return mixed
      * @throws \Nekland\YoutubeApi\Exception\MissingOptionException
      */
-    private function getOption($option, $default=null)
+    protected function getOption($option, $default=null)
     {
         if (isset($this->options[$option])) {
             return $this->options[$option];
