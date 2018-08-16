@@ -78,7 +78,7 @@ class ServiceAuth implements AuthInterface
         $jws->sign($this->getPrivateKey());
 
         $response = $this->client->post(
-            'https://accounts.google.com/o/oauth2/token',
+            'https://www.googleapis.com/oauth2/v4/token',
             ['Content-Type' => 'application/x-www-form-urlencoded'],
             [
                 'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
